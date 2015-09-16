@@ -1,8 +1,8 @@
 # 6.830 Lab 1: SimpleDB
 
-**Assigned: Weds, Sept 10**
+**Assigned: Weds, Sept 16**
 
-**Due: Mon, Sept 22 11:59 PM EDT**
+**Due: Mon, Sept 28 11:59 PM EDT**
 
 
 <!--
