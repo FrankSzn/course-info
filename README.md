@@ -294,7 +294,7 @@ To git@github.com:MIT-DB-Class/homework-solns-2015-becca.git
 Counting objects: 1, done.
 Writing objects: 100% (1/1), 152 bytes | 0 bytes/s, done.
 Total 1 (delta 0), reused 0 (delta 0)
-To git@github.com:MIT-DB-Class/hw-answers-becca.git
+To git@github.com:MIT-DB-Class/homework-solns-2015-becca.git
  * [new tag]         lab1 -> lab1
 ```
 
