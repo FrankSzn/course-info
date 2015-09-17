@@ -49,30 +49,14 @@ with GitHub.
 1. If you don't already have an account, sign up for one here:
    [https://github.com/join][join].
 
-2. Next you need to join the GitHub Organization that we've created for the
-   course: [MIT-DB-Class].
+2. Make sure you are part of the GitHub Organization that we've created for the
+   course: MIT-DB-Class. You should have received an invitation to join via email.
 
-   To join it, go to the [Registration](http://mitdbclass.heroku.com/)
-   page and click the **Sign in with GitHub** button.
-
-   This application uses OAuth and it will take you to GitHub where you will
-   have to give your permission to join it.
-
-3. Enter your MIT ID and you'll be automatically added to the organization and
-   will have a repository created for you.
-
-4. If for whatever reason you can't join the organization, contact a TA for help.
-
-5. You should now be apart of the [MIT-DB-Class] and should have access
-   to a few different repositories.
-
-   You should also now have a repository set up just for your lab solutions.
-   This should be called `hw-answers-<MIT ID here>` and located in the MIT-DB-Class organization.
+   You should now have a repository set up just for your lab solutions.
+   This should be called `homework-solns-2015-<athena username>` and located in the MIT-DB-Class organization.
 
    This is what you'll set up in the next section to allow you to write your
    lab answers and submit them.
-
-If the above didn't work, contact one of the TAs to help you out.
 
 ### Installing git <a name="installing-git"></a>
 The instructions are tested on bash/linux environments. Installing git should be a simple
@@ -152,7 +136,7 @@ the previous section.
    one. Issue the following command, substituting your athena username:
 
    ```bash
-    $ git remote add origin git@github.com:MIT-DB-Class/hw-answers-<athena-username>.git
+    $ git remote add origin git@github.com:MIT-DB-Class/homework-solns-2015-<athena-username>.git
    ```
 
    If you have an error that looks like the following:
@@ -171,7 +155,7 @@ the previous section.
    just issue the following command:
    
    ```bash
-   $ git remote set-url origin git@github.com:MIT-DB-Class/hw-answers-<MIT ID>.git
+   $ git remote set-url origin git@github.com:MIT-DB-Class/homework-solns-2015-<athena username>.git
    ```
 
    This solution was found from [StackOverflow](http://stackoverflow.com/a/2432799) thanks to
@@ -185,8 +169,8 @@ the previous section.
     $ git remote -v
         upstream git@github.com:MIT-DB-Class/simple-db-hw.git (fetch)
         upstream git@github.com:MIT-DB-Class/simple-db-hw.git (push)
-        origin git@github.com:MIT-DB-Class/hw-answers-<MIT ID>.git (fetch)
-        origin git@github.com:MIT-DB-Class/hw-answers-<MIT ID>.git (push)
+        origin git@github.com:MIT-DB-Class/homework-solns-2015-<athena username>.git (fetch)
+        origin git@github.com:MIT-DB-Class/homework-solns-2015-<athena username>.git (push)
    ```
 
 4. Let's test it out by doing a push of your master branch to GitHub by issuing
@@ -354,7 +338,7 @@ If the above command worked for you, you can skip to item 6 below.  If not, subm
 
    Just navigate to your repository and check that your latest commits are on
    GitHub. You should also be able to check 
-   `https://github.com/MIT-DB-Class/hw-answers-(your student name)/tree/lab1`
+   `https://github.com/MIT-DB-Class/homework-solns-2015-<athena username>/tree/lab1`
 
 
 ## <a name="word-of-caution"></a> Word of Caution
