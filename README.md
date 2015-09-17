@@ -188,7 +188,7 @@ the previous section.
     Compressing objects: 100% (3/3), done.
     Writing objects: 100% (3/3), 294 bytes | 0 bytes/s, done.
     Total 3 (delta 2), reused 0 (delta 0)
-    To git@github.com:MIT-DB-Class/hw-answers-joshuad.git   f726472..545a4f0  master -> master
+    To git@github.com:MIT-DB-Class/homework-solns-2015-joshuad.git   f726472..545a4f0  master -> master
    ```
 
 5. That last command was a bit special and only needs to be run the first time
@@ -282,14 +282,14 @@ You should see something like the following output:
 [master b155ba0] Lab 1
  1 file changed, 1 insertion(+)
 Deleted tag 'lab1' (was b26abd0)
-To git@github.com:MIT-DB-Class/hw-answers-becca.git
+To git@github.com:MIT-DB-Class/homework-solns-2015-becca.git
  - [deleted]         lab1
 Counting objects: 11, done.
 Delta compression using up to 4 threads.
 Compressing objects: 100% (4/4), done.
 Writing objects: 100% (6/6), 448 bytes | 0 bytes/s, done.
 Total 6 (delta 3), reused 0 (delta 0)
-To git@github.com:MIT-DB-Class/hw-answers-becca.git
+To git@github.com:MIT-DB-Class/homework-solns-2015-becca.git
    ae31bce..b155ba0  master -> master
 Counting objects: 1, done.
 Writing objects: 100% (1/1), 152 bytes | 0 bytes/s, done.
