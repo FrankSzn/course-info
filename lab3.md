@@ -109,8 +109,9 @@ In both `splitLeafPage()` and `splitInternalPage()`, you will need to update the
 
 Note that in a major departure from `HeapFile.insertTuple()`, `BTreeFile.insertTuple()` could return a large set of dirty pages, especially if any internal pages are split. As you may remember from previous labs, the set of dirty pages is returned to prevent the buffer pool from evicting dirty pages before they have been flushed.
 
-**Note**: as the B+Tree is a complex data structure, it is helpful to understand the invariants of every legal B+Tree before and making a checklist before implementing
-any transformation to the B+Tree (such as merging, splitting or stealing).
+***
+
+**Warning**: as the B+Tree is a complex data structure, it is helpful to understand the properties necessary of every legal B+Tree before modifying it. Here is an informal list:
 
 1. If a parent node points to a  child node, the child nodes must point back to those same parents.
 2. If a leaf node points to a right sibling, then the right sibling points back to that leaf node as a left sibling.
@@ -121,7 +122,11 @@ any transformation to the B+Tree (such as merging, splitting or stealing).
 6. A node has either all non-leaf children, or all leaf children.
 7. A non-root node cannot be less than half full.
 
-To make your life easier, we have implemented a check for all these properties in the method `BTreeFile.checkRep()`. This method is also used to test your B+Tree implementation in some of the tests, but feel free to use it to understand the data structure or to  debug your implementation as well. Remember that this method should always work before and after a key insertion or deletion completes, but not necessarily in the middle of ongoing transformations.
+We have implemented a mechanized check for all these properties in the method `BTreeFile.checkRep()`.
+
+This method is also used to test your B+Tree implementation in some of the tests, but feel free to use it to understand the data structure or to  debug your implementation as well.
+
+**N.B** Remember that this method should always work before and after a key insertion or deletion completes, but not necessarily while in the middle of a method.
 
 ***
 
@@ -170,6 +175,7 @@ In `mergeLeafPages()` and `mergeInternalPages()` you will implement code to merg
 
 
 **Exercise 4: Merging pages**
+
   Implement  `BTreeFile.mergeLeafPages()` and `BTreeFile.mergeInternalPages()`.
 
   Now you should be able to pass all unit tests in `BTreeFileDeleteTest.java` and the system tests in  `systemtest/BTreeFileDeleteTest.java`.
