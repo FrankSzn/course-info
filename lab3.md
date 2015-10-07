@@ -120,8 +120,10 @@ Note that in a major departure from `HeapFile.insertTuple()`, `BTreeFile.insertT
 
 We have implemented a mechanized check for all these properties in the file  `BTreeChecker.java`. This method is also used to test your B+Tree implementation in the `systemtest/BTreeFileDeleteTest.java`. Feel free to add calls to this function to help debug your implementation, like we did in BTreeFileDeleteTest.java.
 
-**N.B** Remember that this method should always work before and after a full call to key insertion or deletion completes, but not necessarily within internal methods.
+**N.B.**
+1. The checker method should always pass after initialization of the tree and before starting and after completing a full call to key insertion or deletion, but not necessarily within internal methods.
 
+2. A tree may be well formed (and therefore pass `checkRep()`) but still incorrect.  For example, the empty tree will always pass `checkRep()`, but may not always be correct (if you just inserted a tuple, the tree should not be empty).
 ***
 
 **Exercise 2: Splitting Pages**
