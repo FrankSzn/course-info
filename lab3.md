@@ -1,22 +1,18 @@
 # 6.830 Lab 3: B+ Tree Index
 
-**Assigned: Wednesday, October 1, 2014**<br>
-**Due: Wednesday, October 15, 2014 11:59 PM EDT**
+**Assigned: Wednesday, October 7, 2015**<br>
+**Due: Wednesday, October 26, 2015 11:59 PM EDT**
 
 ## 0. Introduction
 
 
-
 In this lab you will implement a B+ tree index for efficient lookups and range scans. We supply you with all of the low-level code you will need to implement the tree structure. You will implement searching, splitting pages, redistributing tuples between pages, and merging pages.
-
 
     
 You may find it helpful to review sections 10.3--10.7 in the textbook, which provide detailed information about the structure of B+ trees as well as pseudocode for searches, inserts and deletes.
 
 
-
 As described by the textbook and discussed in class, the internal nodes in B+ trees contain multiple entries, each consisting of a key value and a left and a right child pointer. Adjacent keys share a child pointer, so internal nodes containing *m* keys have *m*+1 child pointers. Leaf nodes can either contain data entries or pointers to data entries in other database files. For simplicity, we will implement a B+tree in which the leaf pages actually contain the data entries. Adjacent leaf pages are linked together with right and left sibling pointers, so range scans only require one initial search through the root and internal nodes to find the first leaf page. Subsequent leaf pages are found by following right (or left) sibling pointers.
-
 
 
 <!-- You may remember that B+ trees can prevent phantom tuples from showing up between two consecutive range scans by using next-key locking. Since SimpleDb uses page-level, strict two-phase locking, protection against phantoms effectively comes for free if the B+ tree is implemented correctly. We test next-key locking in our test cases to confirm your implementation is correct. -->
@@ -356,7 +352,6 @@ your implementation, but they do not define correctness.
 Before handing in your code, you should
 make sure it produces no errors (passes all of the tests) from both
 <tt>ant test</tt> and <tt>ant systemtest</tt>.
-
 
 
 **Important:** Before testing, we will replace your <tt>build.xml</tt>,
