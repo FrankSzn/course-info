@@ -118,9 +118,9 @@ Note that in a major departure from `HeapFile.insertTuple()`, `BTreeFile.insertT
 6. A node has either all non-leaf children, or all leaf children.
 7. A non-root node cannot be less than half full.
 
-We have implemented a mechanized check for all these properties in the file  `BTreeChecker.java`. This method is also used to test your B+Tree implementation in some of the tests. Feel free to use it to debug your implementation.
+We have implemented a mechanized check for all these properties in the file  `BTreeChecker.java`. This method is also used to test your B+Tree implementation in the `systemtest/BTreeFileDeleteTest.java`. Feel free to add calls to this function to help debug your implementation, like we did in BTreeFileDeleteTest.java.
 
-**N.B** Remember that this method should always work before and after a key insertion or deletion completes, but not necessarily while in the middle of a method.
+**N.B** Remember that this method should always work before and after a full call to key insertion or deletion completes, but not necessarily within internal methods.
 
 ***
 
