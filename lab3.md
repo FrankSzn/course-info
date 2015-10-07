@@ -118,9 +118,7 @@ Note that in a major departure from `HeapFile.insertTuple()`, `BTreeFile.insertT
 6. A node has either all non-leaf children, or all leaf children.
 7. A non-root node cannot be less than half full.
 
-We have implemented a mechanized check for all these properties in the method `BTreeFile.checkRep()`.
-
-This method is also used to test your B+Tree implementation in some of the tests, but feel free to use it to understand the data structure or to  debug your implementation as well.
+We have implemented a mechanized check for all these properties in the file  `BTreeChecker.java`. This method is also used to test your B+Tree implementation in some of the tests. Feel free to use it to debug your implementation.
 
 **N.B** Remember that this method should always work before and after a key insertion or deletion completes, but not necessarily while in the middle of a method.
 
@@ -365,7 +363,7 @@ grade it. It will look roughly like this:
 
 ```
 $ git pull origin lab3
-[replace build.xml, HeapFileEncoder.java, BTreeFileEncoder.java and test]
+[replace build.xml, HeapFileEncoder.java, BTreeFileEncoder.java, BTreeChecker.java and test]
 $ git checkout lab3
 $ ant test
 $ ant systemtest
