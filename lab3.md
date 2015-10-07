@@ -109,10 +109,23 @@ In both `splitLeafPage()` and `splitInternalPage()`, you will need to update the
 
 Note that in a major departure from `HeapFile.insertTuple()`, `BTreeFile.insertTuple()` could return a large set of dirty pages, especially if any internal pages are split. As you may remember from previous labs, the set of dirty pages is returned to prevent the buffer pool from evicting dirty pages before they have been flushed.
 
+**Note**: as the B+Tree is a complex data structure, it is helpful to understand the invariants of every legal B+Tree before and making a checklist before implementing
+any transformation to the B+Tree (such as merging, splitting or stealing).
+
+1. If a parent node points to a  child node, the child nodes must point back to those same parents.
+2. If a leaf node points to a right sibling, then the right sibling points back to that leaf node as a left sibling.
+3. The first and last leaves must point to null left and right siblings respectively.
+3. Record Id's must match the page they are actually in.
+4. A `key` in a node with non-leaf children must be larger than any key in the left child, and smaller than any key in the right child.
+5. A `key` in a node with leaf children must be larger or equal than any key in the left child, and smaller or equal than any key in the right child.
+6. A node has either all non-leaf children, or all leaf children.
+7. A non-root node cannot be less than half full.
+
+To make your life easier, we have implemented a check for all these properties in the method `BTreeFile.checkRep()`. This method is also used to test your B+Tree implementation in some of the tests, but feel free to use it to understand the data structure or to  debug your implementation as well. Remember that this method should always work before and after a key insertion or deletion completes, but not necessarily in the middle of ongoing transformations.
+
 ***
 
 **Exercise 2: Splitting Pages**
-
 
   
   Implement `BTreeFile.splitLeafPage()` and `BTreeFile.splitInternalPage()`.
@@ -124,45 +137,42 @@ Note that in a major departure from `HeapFile.insertTuple()`, `BTreeFile.insertT
 ***
 
   
-
-
 ## 4. Delete
 
-In order to keep the tree balanced and not waste unnecessary space, deletions in a B+Tree may cause pages to merge (see Figure 3). You may find it useful to review section 10.6 in the textbook.
+In order to keep the tree balanced and not waste unnecessary space, deletions in a B+Tree may cause pages to redistribute tuples (Figure 3) or, eventually, to merge (see Figure 4). You may find it useful to review section 10.6 in the textbook.
     
-<p align="center">
-<img width=500 src="merging_leaf.png"><br>
-<img width=500 src="merging_internal.png"><br>
-<i>Figure 3: Merging pages</i>
-</p>
-
-As described in the textbook, attempting to delete a tuple from a leaf page that is less than half full should cause that page to either steal tuples from one of its siblings or merge with one of its siblings.  If one of the page's siblings has tuples to spare, the tuples should be evenly distributed between the two pages, and the parent's entry should be updated accordingly (see Figure 4). However, if the sibling is also at minimum occupancy, then the two pages should merge and the entry deleted from the parent. Occasionally, deleting an entry from the parent will cause the parent to become less than half full. In this case, the parent should steal entries from its siblings or merge with a sibling. This may cause recursive merges or deletion of the root node if the last entry is deleted from the root node. 
-
 <p align="center">
 <img width=500 src="redist_leaf.png"><br>
 <img width=500 src="redist_internal.png"><br>
-<i>Figure 4: Redistributing pages</i>
+<i>Figure 3: Redistributing pages</i>
 </p>
 
+<p align="center">
+<img width=500 src="merging_leaf.png"><br>
+<img width=500 src="merging_internal.png"><br>
+<i>Figure 4: Merging pages</i>
+</p>
 
+As described in the textbook, attempting to delete a tuple from a leaf page that is less than half full should cause that page to either steal tuples from one of its siblings or merge with one of its siblings.  If one of the page's siblings has tuples to spare, the tuples should be evenly distributed between the two pages, and the parent's entry should be updated accordingly (see Figure 3). However, if the sibling is also at minimum occupancy, then the two pages should merge and the entry deleted from the parent (Figure 4). In turn, deleting an entry from the parent may cause the parent to become less than half full. In this case, the parent should steal entries from its siblings or merge with a sibling. This may cause recursive merges or even deletion of the root node if the last entry is deleted from the root node. 
 
-
-In this exercise you will implement `stealFromLeafPage()`, `stealFromLeftInternalPage()`, `stealFromRightInternalPage()`, `mergeLeafPages()` and `mergeInternalPages()` in `BTreeFile.java`. In the first three functions you will implement code to evenly redistribute tuples/entries if the siblings have tuples/entries to spare. Remember to update the corresponding key field in the parent (look carefully at how this is done in Figure 4 - keys are effectively "rotated" through the parent).  In `stealFromLeftInternalPage()`/`stealFromRightInternalPage()`, you will also need to update the parent pointers of the children that were moved. You should be able to reuse the function `updateParentPointers()` for this purpose. 
+In this exercise you will implement `stealFromLeafPage()`, `stealFromLeftInternalPage()`, `stealFromRightInternalPage()`, `mergeLeafPages()` and `mergeInternalPages()` in `BTreeFile.java`. In the first three functions you will implement code to evenly redistribute tuples/entries if the siblings have tuples/entries to spare. Remember to update the corresponding key field in the parent (look carefully at how this is done in Figure 3 - keys are effectively "rotated" through the parent).  In `stealFromLeftInternalPage()`/`stealFromRightInternalPage()`, you will also need to update the parent pointers of the children that were moved. You should be able to reuse the function `updateParentPointers()` for this purpose. 
     
-
 In `mergeLeafPages()` and `mergeInternalPages()` you will implement code to merge pages, effectively performing the inverse of `splitLeafPage()` and `splitInternalPage()`.  You will find the function `deleteParentEntry()` extremely useful for handling all the different recursive cases.  Be sure to call `setEmptyPage()` on deleted pages to make them available for reuse.  As with the previous exercises, we recommend using `BTreeFile.getPage()` to encapsulate the process of fetching pages and keeping the list of dirty pages up to date.
 
 ***
 
-**Exercise 3: Redistributing and merging pages**
-
-
+**Exercise 3: Redistributing pages**
   
-  Implement `BTreeFile.stealFromLeafPage()`, `BTreeFile.stealFromLeftInternalPage()`, `BTreeFile.stealFromRightInternalPage()`, `BTreeFile.mergeLeafPages()` and `BTreeFile.mergeInternalPages()`.
+  Implement `BTreeFile.stealFromLeafPage()`, `BTreeFile.stealFromLeftInternalPage()`, `BTreeFile.stealFromRightInternalPage()`.
 
-  
-  After completing this exercise, you should be able to pass the unit tests in `BTreeFileDeleteTest.java`.  You should also be able to pass the system tests in `systemtest/BTreeFileDeleteTest.java`.  The system tests may take several seconds to complete since they create a large B+ tree in order to fully test the system. 
+  After completing this exercise, you should be able to pass some of the unit tests in `BTreeFileDeleteTest.java` (such as `testStealFromLeftLeafPage` and `testStealFromRightLeafPage`).  The system tests may take several seconds to complete since they create a large B+ tree in order to fully test the system. 
 <!--and the system test in `BTreeTest.java`. Please note that the test in `BTreeTest.java` may take up to a minute to complete.-->
+
+
+**Exercise 4: Merging pages**
+  Implement  `BTreeFile.mergeLeafPages()` and `BTreeFile.mergeInternalPages()`.
+
+  Now you should be able to pass all unit tests in `BTreeFileDeleteTest.java` and the system tests in  `systemtest/BTreeFileDeleteTest.java`.
 
 ***
 
@@ -170,7 +180,7 @@ In `mergeLeafPages()` and `mergeInternalPages()` you will implement code to merg
 
 ***
 
-**Bonus Exercise 4: (10% extra credit)**
+**Bonus Exercise 5: (10% extra credit)**
   
   Create and implement a class called `BTreeReverseScan` which scans the `BTreeFile` in reverse, given an optional `IndexPredicate`.  
   
