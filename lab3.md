@@ -1,7 +1,7 @@
 # 6.830 Lab 3: B+ Tree Index
 
 **Assigned: Wednesday, October 7, 2015**<br>
-**Due: Wednesday, October 26, 2015 11:59 PM EDT**
+**Due: Monday, October 26, 2015 11:59 PM EDT**
 
 ## 0. Introduction
 
