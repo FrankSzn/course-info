@@ -1,7 +1,7 @@
 # 6.830 Lab 4: SimpleDB Transactions
 
-**Assigned: Wednesday, October 15, 2014**<br>
-**Due: Monday, November 3, 2014 11:59 PM EDT**
+**Assigned: Wednesday, October 26, 2015**<br>
+**Due: Monday, November 9, 2015 11:59 PM EDT**
 
 
 
@@ -525,18 +525,18 @@ the GitHub web page.
 Just because your code has been commited on your local machine does not
 mean that it has been **submitted**; it needs to be on GitHub.
 
-There is a bash script `turnInLab4.sh` in the root level directory of simple-db-hw that commits 
+There is a bash script `turnInLab.sh` in the root level directory of simple-db-hw that commits 
 your changes, deletes any prior tag
 for the current lab, tags the current commit, and pushes the branch and tag 
-to GitHub.  If you are using Linux or Mac OSX, you should be able to run the following:
+to GitHub. If you are using Linux or Mac OSX, you should be able to run the following:
 
    ```bash
-   $ ./turnInLab4.sh
+   $ ./turnInLab.sh
    ```
 You should see something like the following output:
 
  ```bash
- $ ./turnInLab4.sh 
+ $ ./turnInLab.sh 
 [master b155ba0] Lab 4
  1 file changed, 1 insertion(+)
 Deleted tag 'lab4' (was b26abd0)
