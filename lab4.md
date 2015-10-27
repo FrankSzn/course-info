@@ -523,7 +523,10 @@ to GitHub. If you are using Linux or Mac OSX, you should be able to run the foll
    ```bash
    $ ./turnInLab lab4
    ```
-   Otherwise, if you do not have access to a bash interpreter, you need to ensure all your code is in github and create a tag on the commit you want us to grade:
+
+If you manage to see the message "Please verify in GitHub..." then it was probably successful, but you should still go check the github page.
+
+If you do not have access to a bash interpreter to run the script, you still need to ensure all your code is in github and create a tag on the commit you want us to grade:
 
 ```bash
 $ git tag lab4 # tags current commit
@@ -539,11 +542,17 @@ $ git tag lab4
 $ git push origin --tags
 ```
 
-If you manage to see the message "Please verify in GitHub..." then it was probably successful. Go and check the [MIT-DB-Class] organization page on GitHub to make sure that we can see your solutions.
+No matter how you did the tagging,  go and check the [MIT-DB-Class] organization page on GitHub to make sure that we can see your solutions.
 
    Just navigate to your repository and check that your latest commits are on
    GitHub. You should also be able to check 
    `https://github.com/MIT-DB-Class/hw-answers-(your student name)/tree/lab4`
+
+The criteria for your lab being submitted on time is that your code must be
+**tagged** and 
+**pushed** by the date and time. This means that if one of the TAs or the
+instructor were to open up GitHub, they would be able to see your solutions on
+the GitHub web page.
 
 
 #### <a name="word-of-caution"></a> Word of Caution
@@ -552,12 +561,6 @@ Git is a distributed version control system. This means everything operates
 offline until you run `git pull` or `git push`. This is a great feature.
 
 The bad thing is that you may forget to `git push` your changes. This is why we strongly, **strongly** suggest that you check GitHub to be sure that what you want us to see matches up with what you expect.
-
-The criteria for your lab being submitted on time is that your code must be
-**tagged** and 
-**pushed** by the date and time. This means that if one of the TAs or the
-instructor were to open up GitHub, they would be able to see your solutions on
-the GitHub web page.
 
 Just because your code has been commited on your local machine does not
 mean that it has been **submitted**; it needs to be on GitHub.
