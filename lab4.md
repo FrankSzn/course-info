@@ -514,16 +514,7 @@ In order for your write-up to be added to the git repo, you need to explicitly a
 $ git add answers.txt
 ```
 You also need to explicitly add any other files you create, such as new *.java 
-files.
-
-The criteria for your lab being submitted on time is that your code must be
-**tagged** and 
-**pushed** by the date and time. This means that if one of the TAs or the
-instructor were to open up GitHub, they would be able to see your solutions on
-the GitHub web page.
-
-Just because your code has been commited on your local machine does not
-mean that it has been **submitted**; it needs to be on GitHub.
+files. After you've added and committed your changes locally, you can submit your code as follows.
 
 There is a bash script `turnInLab` in the root level directory of simple-db-hw that commits  your changes, deletes any prior tag
 for the current lab, tags the current commit, and pushes the branch and tag 
@@ -532,7 +523,7 @@ to GitHub. If you are using Linux or Mac OSX, you should be able to run the foll
    ```bash
    $ ./turnInLab lab4
    ```
-   Otherwise, you need to ensure all your code is in github and create a tag on the commit you want us to grade:
+   Otherwise, if you do not have access to a bash interpreter, you need to ensure all your code is in github and create a tag on the commit you want us to grade:
 
 ```bash
 $ git tag lab4 # tags current commit
@@ -561,6 +552,15 @@ Git is a distributed version control system. This means everything operates
 offline until you run `git pull` or `git push`. This is a great feature.
 
 The bad thing is that you may forget to `git push` your changes. This is why we strongly, **strongly** suggest that you check GitHub to be sure that what you want us to see matches up with what you expect.
+
+The criteria for your lab being submitted on time is that your code must be
+**tagged** and 
+**pushed** by the date and time. This means that if one of the TAs or the
+instructor were to open up GitHub, they would be able to see your solutions on
+the GitHub web page.
+
+Just because your code has been commited on your local machine does not
+mean that it has been **submitted**; it needs to be on GitHub.
 
 <a name="bugs"></a>
 
