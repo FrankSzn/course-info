@@ -532,6 +532,22 @@ to GitHub. If you are using Linux or Mac OSX, you should be able to run the foll
    ```bash
    $ ./turnInLab lab4
    ```
+   Otherwise, you need to ensure all your code is in github and create a tag on the commit you want us to grade:
+
+```bash
+$ git tag lab4 # tags current commit
+$ git push origin --tags 
+```
+
+To modify/update your tag if one already exists (if done after the due date, contact us)
+
+```bash
+$ git tag -d lab4
+$ git push origin :refs/tags/lab4
+$ git tag lab4
+$ git push origin --tags
+```
+
 If you manage to see the message "Please verify in GitHub..." then it was probably successful. Go and check the [MIT-DB-Class] organization page on GitHub to make sure that we can see your solutions.
 
    Just navigate to your repository and check that your latest commits are on
