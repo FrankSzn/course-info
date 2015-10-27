@@ -525,62 +525,14 @@ the GitHub web page.
 Just because your code has been commited on your local machine does not
 mean that it has been **submitted**; it needs to be on GitHub.
 
-There is a bash script `turnInLab.sh` in the root level directory of simple-db-hw that commits 
-your changes, deletes any prior tag
+There is a bash script `turnInLab` in the root level directory of simple-db-hw that commits  your changes, deletes any prior tag
 for the current lab, tags the current commit, and pushes the branch and tag 
 to GitHub. If you are using Linux or Mac OSX, you should be able to run the following:
 
    ```bash
-   $ ./turnInLab.sh
+   $ ./turnInLab lab4
    ```
-You should see something like the following output:
-
- ```bash
- $ ./turnInLab.sh 
-[master b155ba0] Lab 4
- 1 file changed, 1 insertion(+)
-Deleted tag 'lab4' (was b26abd0)
-To git@github.com:MIT-DB-Class/hw-answers-becca.git
- - [deleted]         lab4
-Counting objects: 11, done.
-Delta compression using up to 4 threads.
-Compressing objects: 100% (4/4), done.
-Writing objects: 100% (6/6), 448 bytes | 0 bytes/s, done.
-Total 6 (delta 3), reused 0 (delta 0)
-To git@github.com:MIT-DB-Class/hw-answers-becca.git
-   ae31bce..b155ba0  master -> master
-Counting objects: 1, done.
-Writing objects: 100% (1/1), 152 bytes | 0 bytes/s, done.
-Total 1 (delta 0), reused 0 (delta 0)
-To git@github.com:MIT-DB-Class/hw-answers-becca.git
- * [new tag]         lab4 -> lab4
-```
-
-
-If the above command worked for you, you can skip to item 6 below.  If not, submit your solutions for lab 4 as follows:
-
-1. Look at your current repository status.
-
-   ```bash
-   $ git status
-   ```
-
-2. Add and commit your code changes (if they aren't already added and commited).
-
-   ```bash
-    $ git commit -a -m 'Lab 4'
-   ```
-
-3. This is the most important part: **push** your solutions to GitHub.
-
-   ```bash
-   $ git push origin master
-   $ git push origin lab4 
-   ```
-
-6. The last thing that we strongly recommend you do is to go to the
-   [MIT-DB-Class] organization page on GitHub to
-   make sure that we can see your solutions.
+If you manage to see the message "Please verify in GitHub..." then it was probably successful. Go and check the [MIT-DB-Class] organization page on GitHub to make sure that we can see your solutions.
 
    Just navigate to your repository and check that your latest commits are on
    GitHub. You should also be able to check 
@@ -592,15 +544,12 @@ If the above command worked for you, you can skip to item 6 below.  If not, subm
 Git is a distributed version control system. This means everything operates
 offline until you run `git pull` or `git push`. This is a great feature.
 
-The bad thing is that you may forget to `git push` your changes. This is why we
-strongly, **strongly** suggest that you check GitHub to be sure that what you
-want us to see matches up with what you expect.
-
-
+The bad thing is that you may forget to `git push` your changes. This is why we strongly, **strongly** suggest that you check GitHub to be sure that what you want us to see matches up with what you expect.
 
 <a name="bugs"></a>
+
 ###  3.3. Submitting a bug 
-SimpleDB is a relatively complex piece of code. It is very possible you are going to find bugs, inconsistencies, and bad, outdated, or incorrect documentation, etc.
+Despite its friendly sounding name, SimpleDB is a relatively complex piece of code. It is very possible you are going to find bugs, inconsistencies, and bad, outdated, or incorrect documentation, etc.
 
 We ask you, therefore, to do this lab with an adventurous mindset.  Don't get mad if something is not clear, or even wrong; rather, try to figure it out
 yourself or send us a friendly email.  
@@ -608,7 +557,6 @@ yourself or send us a friendly email.
 Please submit (friendly!) bug reports to <a
 href="mailto:6.830-staff@mit.edu">6.830-staff@mit.edu</a>.
 When you do, please try to include:
-
 
 
 * A description of the bug.
