@@ -1,7 +1,7 @@
 # 6.830 Lab 6: Rollback and Recovery
 
-**Assigned: Wednesday, November 26, 2014**<br>
-**Due: Wednesday, December 10, 2014 11:59 PM EST**
+**Assigned: Wednesday, November 30, 2015**<br>
+**Due: Wednesday, December 9, 2015 11:59 PM EST**
 
 ## 0. Introduction
 
